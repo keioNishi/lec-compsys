@@ -1,0 +1,18 @@
+read_verilog -sv alu.v
+read_verilog -sv imem.v
+read_verilog -sv pc.v
+read_verilog -sv rega.v
+read_verilog -sv dec.v
+read_verilog -sv lidx.v
+read_verilog -sv pu.v
+#read_liberty -lib ../osu018_stdcells.lib #lib
+proc
+#flatten
+synth -auto-top
+write_verilog synth.v
+dfflibmap -liberty ../osu018_stdcells.lib
+abc -D 5000 -liberty ../osu018_stdcells.lib
+stat -liberty ../osu018_stdcells.lib
+write_verilog gate.v
+#show
+show -viewer gvedit # for windows user

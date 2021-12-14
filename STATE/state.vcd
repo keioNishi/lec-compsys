@@ -1,0 +1,101 @@
+$date
+	Fri May 07 10:49:14 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module test $end
+$var wire 2 ! s [1:0] $end
+$var reg 1 " a $end
+$var reg 1 # b $end
+$var reg 1 $ clk $end
+$var reg 1 % rst $end
+$scope module state $end
+$var wire 1 " a $end
+$var wire 1 # b $end
+$var wire 1 $ clk $end
+$var wire 1 % rst $end
+$var reg 2 & ns [1:0] $end
+$var reg 2 ' s [1:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx '
+bx &
+1%
+0$
+x#
+x"
+bx !
+$end
+#5
+b0 &
+b0 !
+b0 '
+1$
+#10
+0$
+#15
+1$
+#20
+0$
+0#
+0"
+0%
+#25
+1$
+#30
+b1 &
+0$
+1"
+#35
+b11 &
+b1 !
+b1 '
+1$
+#40
+0$
+#45
+b11 !
+b11 '
+1$
+#50
+0$
+#55
+1$
+#60
+0$
+#65
+1$
+#70
+0$
+#75
+1$
+#80
+0$
+1#
+#85
+1$
+#90
+0$
+#95
+1$
+#100
+0$
+#105
+1$
+#110
+0$
+#115
+1$
+#120
+0$
+#125
+1$
+#130
+0$

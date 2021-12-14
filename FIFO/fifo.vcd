@@ -1,0 +1,207 @@
+$date
+	Fri May 07 09:46:41 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module fifotest $end
+$var wire 8 ! out [7:0] $end
+$var wire 1 " full $end
+$var wire 1 # empty $end
+$var reg 1 $ clk $end
+$var reg 8 % in [7:0] $end
+$var reg 1 & re $end
+$var reg 1 ' rst $end
+$var reg 1 ( we $end
+$scope module fifo $end
+$var wire 1 $ clk $end
+$var wire 8 ) in [7:0] $end
+$var wire 8 * out [7:0] $end
+$var wire 1 & re $end
+$var wire 1 ' rst $end
+$var wire 1 ( we $end
+$var reg 1 # empty $end
+$var reg 1 " full $end
+$var reg 3 + head [2:0] $end
+$var reg 3 , headi [2:0] $end
+$var reg 3 - tail [2:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx -
+bx ,
+bx +
+bx *
+b101 )
+0(
+1'
+0&
+b101 %
+0$
+0#
+0"
+bx !
+$end
+#5
+1#
+b1 ,
+b0 -
+b0 +
+1$
+#10
+0$
+#15
+1$
+#20
+0$
+#25
+1$
+#30
+0$
+1(
+0'
+#35
+b10 ,
+0#
+b101 !
+b101 *
+b1 +
+1$
+#40
+0$
+b110 %
+b110 )
+#45
+b11 ,
+b10 +
+1$
+#50
+0$
+b111 %
+b111 )
+#55
+b100 ,
+b11 +
+1$
+#60
+0$
+0(
+#65
+1$
+#70
+0$
+1&
+#75
+b110 !
+b110 *
+b1 -
+1$
+#80
+0$
+b1000 %
+b1000 )
+1(
+0&
+#85
+b101 ,
+b100 +
+1$
+#90
+0$
+b1001 %
+b1001 )
+#95
+b110 ,
+b101 +
+1$
+#100
+0$
+b1010 %
+b1010 )
+#105
+b111 ,
+b110 +
+1$
+#110
+0$
+b1011 %
+b1011 )
+#115
+b0 ,
+b111 +
+1$
+#120
+0$
+b1100 %
+b1100 )
+#125
+b1 ,
+b0 +
+1$
+#130
+0$
+b1101 %
+b1101 )
+#135
+1#
+b10 ,
+b1 +
+1$
+#140
+0$
+b1110 %
+b1110 )
+#145
+b11 ,
+0#
+b10 +
+b1110 !
+b1110 *
+1$
+#150
+0$
+b1111 %
+b1111 )
+#155
+b100 ,
+b11 +
+1$
+#160
+0$
+b10000 %
+b10000 )
+#165
+b101 ,
+b100 +
+1$
+#170
+0$
+#175
+b110 ,
+b101 +
+1$
+#180
+0$
+#185
+b111 ,
+b110 +
+1$
+#190
+0$
+#195
+b0 ,
+b111 +
+1$
+#200
+0$
+#205
+b1 ,
+b0 +
+1$
+#210
+0$

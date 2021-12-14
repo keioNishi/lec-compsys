@@ -1,0 +1,56 @@
+$date
+	Fri Apr 30 10:22:31 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module test $end
+$var wire 8 ! rd [7:0] $end
+$var reg 1 " clk $end
+$var reg 2 # ra [1:0] $end
+$var reg 2 $ wa [1:0] $end
+$var reg 8 % wd [7:0] $end
+$var reg 1 & we $end
+$scope module mem $end
+$var wire 1 " clk $end
+$var wire 2 ' ra [1:0] $end
+$var wire 8 ( rd [7:0] $end
+$var wire 2 ) wa [1:0] $end
+$var wire 8 * wd [7:0] $end
+$var wire 1 & we $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b1101111 *
+b0 )
+bx (
+b0 '
+0&
+b1101111 %
+b0 $
+b0 #
+0"
+bx !
+$end
+#10
+1"
+#20
+0"
+#30
+1"
+#40
+0"
+#50
+b1101111 !
+b1101111 (
+1"
+1&
+#60
+0"
+#70
+1"
