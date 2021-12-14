@@ -1,5 +1,7 @@
-[![Processingバッジ](https://img.shields.io/badge/Processing->v3.5-0464f6.svg?style=flat)](https://processing.org/)
-[![Slackマルチメディアデザイン](https://img.shields.io/badge/Slack-keio--st--multimedia-3f0f40.svg?style=flat)](https://keio-st-multimedia.slack.com/)
+[![Icarus_Verilogバッジ](https://img.shields.io/badge/Icarus_Verilog->v11.0-fe0000.svg?style=flat)](http://iverilog.icarus.com/)
+[![GTKWaveバッジ](https://img.shields.io/badge/GTKWave->v3.3.1-3d4067.svg?style=flat)](http://gtkwave.sourceforge.net/)
+[![yosysバッジ](https://img.shields.io/badge/yosys->v0.12--1-84e7f7.svg?style=flat)](https://github.com/YosysHQ/yosys#readme)
+[![Slack計算機システム設計論](https://img.shields.io/badge/Slack-keio--ics--compsys.slack.com-3f0f40.svg?style=flat)](https://keio-ics-compsys.slack.com/)
 
 # 「計算機システム設計論」レクチャーノート
 ## lec-dataai / Lecture Notes for "Multimedia Design"
