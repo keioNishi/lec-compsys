@@ -13,5 +13,6 @@ dfflibmap -liberty ../osu018_stdcells.lib
 abc -D 5000 -liberty ../osu018_stdcells.lib
 stat -liberty ../osu018_stdcells.lib
 write_verilog gate.v
+select top
 show -format dot
 #show -viewer gvedit # for windows user
