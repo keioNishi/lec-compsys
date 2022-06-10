@@ -1,7 +1,7 @@
 all:		a.out fibo.vcd
 a.out:		test.v top.v alu.v pc.v imem.v rega.v dec.v
 		iverilog -g2012 test.v top.v alu.v pc.v imem.v rega.v dec.v
-fibo.vcd:
+fibo.vcd:	a.out
 		vvp a.out
 gate.v:		test.v top.v alu.v pc.v imem.v rega.v dec.v
 		yosys top.ys
