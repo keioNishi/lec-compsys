@@ -42,3 +42,13 @@ module imem(input [5:0] pc, output [15:0] o);
 		default: o = 16'b0_0_00_000_00_00;
 		endcase
 endmodule
+
+/*
+F E D C B A 9 8 7 6 5 4 3 2 1 0
+0 0 0 * * * * * * * * * * 0 * 0 ; NOP
+0 0 0 * * * * * * * * * * 0 * 1 ; HALT
+0 0 0 * rw> b-> * op -> * 1 a-> ; CAL rw=ra,rb
+0 0 1 o rw> b-> im------------> ; CAL rw=ra,im
+0 1 0 0 rw> b-> im------------> ; LIL rw=rb,im
+0 1 0 1 rw> b-> im------------> ; LIH rw=rb,im
+*/
