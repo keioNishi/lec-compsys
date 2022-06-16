@@ -8,6 +8,7 @@ wave:		fibo.vcd
 		gtkwave fibo.vcd
 gate.v:		test.v pu.v alu.v pc.v imem.v rega.v dec.v lidx.v
 		yosys pu.ys
+synth:		yosys
 yosys:		test.v pu.v alu.v pc.v imem.v rega.v dec.v lidx.v
 		yosys pu.ys
 show:		show.dot
