@@ -4,7 +4,7 @@ module dec(
 	output logic [2:0] op,
 	output logic [1:0] wadr,
 	output we, halt, ll, lh,
-	output logic [7:0] ib);
+	output logic [7:0] iv);
 	logic we, halt;
 	logic ll, lh;
 	always_comb begin
@@ -16,7 +16,7 @@ module dec(
 		halt = 0;
 		ll = 0;
 		lh = 0;
-		ib = 0;
+		iv = 0;
 		case(o[15:13])
 		3'b000: begin
 			if(o[2]) begin
