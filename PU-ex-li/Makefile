@@ -1,11 +1,11 @@
-all:		a.out fibo.vcd
+all:		a.out pu.vcd
 a.out:		test.v pu.v alu.v pc.v imem.v rega.v dec.v lidx.v
 		iverilog -g2012 test.v pu.v alu.v pc.v imem.v rega.v dec.v lidx.v
-fibo.vcd:	a.out
+pu.vcd:		a.out
 		vvp a.out
 sim:		wave
-wave:		fibo.vcd
-		gtkwave fibo.vcd
+wave:		pu.vcd
+		gtkwave pu.vcd
 gate.v:		test.v pu.v alu.v pc.v imem.v rega.v dec.v lidx.v
 		yosys pu.ys
 synth:		yosys
@@ -19,6 +19,8 @@ minsim:		gate.v
 		iverilog -gspecify -T typ test.v gate.v ../osu018_stdcells.v
 maxsim:		gate.v
 		iverilog -gspecify -T typ test.v gate.v ../osu018_stdcells.v
+clean:
+		-rm *.out *.vcd
 pu:
 		iverilog -g2012 pu.v alu.v pc.v imem.v rega.v dec.v lidx.v
 alu:
@@ -33,5 +35,3 @@ dec:
 		iverilog -g2012 dec.v
 lidx:
 		iverilog -g2012 lidx.v
-clean:
-		rm *.out *.vcd
