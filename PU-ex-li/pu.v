@@ -1,4 +1,4 @@
-module top(
+module pu(
 	output we,
 	output logic [15:0] wd,
 	input clk, rst);

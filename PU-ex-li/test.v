@@ -2,11 +2,11 @@
 module test;
 	reg clk, rst;
 	wire [15:0] wd;
-	top top(we, wd, clk, rst);
+	pu pu(we, wd, clk, rst);
 	always #5 clk =~ clk;
 	initial begin
 	$dumpfile("fibo.vcd");
-	$dumpvars(0, top);
+	$dumpvars(0, pu);
 	rst = 1;
 	clk = 0;
 	#20
