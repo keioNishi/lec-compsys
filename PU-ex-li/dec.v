@@ -20,8 +20,8 @@ module dec(
 		case(o[15:13])
 		3'b000: begin
 			if(o[2]) begin
-				bradr = o[9:8];
-				aradr = o[1:0];
+				aradr = o[9:8];
+				bradr = o[1:0];
 				op = o[6:4];
 				wadr = o[11:10];
 				we = 1'b1;
