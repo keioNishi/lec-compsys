@@ -1,5 +1,5 @@
 `include "pu.vh"
-module dmem(
+module dmem( // Data Memory
 	input [`DMSB:0] ad,
 	input [`WIDTH:0] wd,
 	input we,
@@ -7,6 +7,7 @@ module dmem(
 	input clk);
 	logic [`WIDTH:0] dm [`DMS:0];
 	assign rd = dm[ad];
-	always @(posedge clk)
+	always @(posedge clk) begin
 		if(we) dm[ad] <= wd;
+	end
 endmodule

@@ -101,7 +101,6 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 //
 //
 `ifdef DEBUG
-	$display("LIL rw,im (rw=rb)");
 	$display("LIL wr:%h liop:%h, IM:%h (rb:%h)", wad, liop, iv, rb);
 `endif
 		end
@@ -117,7 +116,6 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 //
 //
 `ifdef DEBUG
-	$display("LIH rw,im (rw=rb)");
 	$display("LIH wr:%h liop:%h, IM:%h (rb:%h)", wad, liop, iv, rb);
 `endif
 		end
