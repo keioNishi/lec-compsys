@@ -1,10 +1,11 @@
-read_verilog -sv alu.v
-read_verilog -sv imem.v
-read_verilog -sv pc.v
-read_verilog -sv rega.v
-read_verilog -sv dec.v
-read_verilog -sv lidx.v
-read_verilog -sv pu.v
+read_verilog -sv alu.sv
+read_verilog -sv imem.sv
+read_verilog -sv pc.sv
+read_verilog -sv ra.sv
+read_verilog -sv dec.sv
+read_verilog -sv imx.sv
+read_verilog -sv sel.sv
+read_verilog -sv pu.sv
 #read_liberty -lib ../osu018_stdcells.lib #lib
 proc
 hierarchy -check -top pu

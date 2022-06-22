@@ -1,0 +1,48 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Thu Jun 16 01:49:17 2022
+[*]
+[dumpfile] "C:\Users\west\lec-compsys\PU\PU-ex-li-ans\fibo.vcd"
+[dumpfile_mtime] "Thu Jun 16 01:44:55 2022"
+[dumpfile_size] 8684
+[savefile] "C:\Users\west\lec-compsys\PU\PU-ex-li-ans\pu.gtkw"
+[timestart] 0
+[size] 2560 1369
+[pos] -35 -35
+*-15.522834 79000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test.
+[sst_width] 197
+[signals_width] 102
+[sst_expanded] 1
+[sst_vpaned_height] 423
+@28
+test.top.clk
+@29
+test.top.rst
+@22
+test.top.a[15:0]
+@28
+test.top.arad[1:0]
+@22
+test.top.b[15:0]
+@28
+test.top.brad[1:0]
+test.top.op[2:0]
+test.top.halt
+@22
+test.top.ib[7:0]
+test.top.lb[15:0]
+@28
+test.top.lh
+test.top.ll
+@22
+test.top.o[15:0]
+test.top.pca[5:0]
+@28
+test.top.wad[1:0]
+@22
+test.top.wd[15:0]
+@28
+test.top.we
+[pattern_trace] 1
+[pattern_trace] 0

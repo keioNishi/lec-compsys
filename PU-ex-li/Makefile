@@ -1,37 +1,50 @@
-all:		a.out pu.vcd
-a.out:		test.v pu.v alu.v pc.v imem.v rega.v dec.v lidx.v
-		iverilog -g2012 test.v pu.v alu.v pc.v imem.v rega.v dec.v lidx.v
-pu.vcd:		a.out
-		vvp a.out
+SRCS = pu.vh pu.sv alu.sv pc.sv imem.sv ra.sv dec.sv imx.sv sel.sv
+TESTSRC = test.sv
+ALLSRCS = pu.vh $(SRCS)
+TESTSRCS = $(TESTSRC) $(SRCS)
+VCDFILE = pu.vcd
+YOSYSSCRIPT = pu.ys
+OUTFILE = a.out
+GATEFILE = gate.v
+SYNTHFILE = synth.v
+DOTFILE = show.dot
+CELLFILE = ../osu018_stdcells.v
+all:		$(OUTFILE) $(VCDFILE)
+a.out:		$(TESTSRCS)
+		iverilog -g2012 $(TESTSRCS)
+$(VCDFILE):	$(OUTFILE)
+		vvp $(OUTFILE)
 sim:		wave
-wave:		pu.vcd
-		gtkwave pu.vcd
-gate.v:		test.v pu.v alu.v pc.v imem.v rega.v dec.v lidx.v
-		yosys pu.ys
+wave:		$(VCDFILE)
+		gtkwave $(VCDFILE)
+gate.v:		$(TESTSRCS)
+		yosys $(YOSYSSCRIPT)
 synth:		yosys
-yosys:		test.v pu.v alu.v pc.v imem.v rega.v dec.v lidx.v
-		yosys pu.ys
-show:		show.dot
-		gvedit show.dot
-typsim:		gate.v
-		iverilog -gspecify -T typ test.v gate.v ../osu018_stdcells.v
-minsim:		gate.v
-		iverilog -gspecify -T typ test.v gate.v ../osu018_stdcells.v
-maxsim:		gate.v
-		iverilog -gspecify -T typ test.v gate.v ../osu018_stdcells.v
+yosys:		$(TESTSRCS)
+		yosys $(YOSYSSCRIPT)
+show:		$(DOTFILE)
+		gvedit $(DOTFILE)
+typsim:		$(GATEFILE)
+		iverilog -gspecify -T typ $(TESTSRC) $(GATEFILE) $(CELLFILE)
+minsim:		$(GATEFILE)
+		iverilog -gspecify -T typ $(TESTSRC) $(GATEFILE) $(CELLFILE)
+maxsim:		$(GATEFILE)
+		iverilog -gspecify -T typ $(TESTSRC) $(GATEFILE) $(CELLFILE)
 clean:
-		-rm *.out *.vcd
-pu:
-		iverilog -g2012 pu.v alu.v pc.v imem.v rega.v dec.v lidx.v
+		-rm *.out *.vcd *.dot abc.history log $(GATEFILE) $(SYNTHFILE)
+#pu:
+#		iverilog -g2012 $(SRCS)
 alu:
-		iverilog -g2012 alu.v
+		iverilog -g2012 alu.sv
 pc:
-		iverilog -g2012 pc.v
+		iverilog -g2012 pc.sv
 imem:
-		iverilog -g2012 imem.v
-rega:
-		iverilog -g2012 rega.v
+		iverilog -g2012 imem.sv
+ra:
+		iverilog -g2012 ra.sv
 dec:
-		iverilog -g2012 dec.v
-lidx:
-		iverilog -g2012 lidx.v
+		iverilog -g2012 dec.sv
+imx:
+		iverilog -g2012 imx.sv
+sel:
+		iverilog -g2012 sel.sv
