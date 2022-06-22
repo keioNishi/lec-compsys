@@ -19,8 +19,8 @@ module dec( // Decoder
 /*
 
 F E D C B A 9 8 7 6 5 4 3 2 1 0
-0 0 0 0 0 0 0 0 0 0 0 0 * * * 0 ; NOP (0) DSTB
-0 0 0 0 0 0 0 0 0 0 0 0 * * * 1 ; HALT (1)
+0 0 0 0 0 0 0 0 0 0 0 0 * * * 0 ; NOP
+0 0 0 0 0 0 0 0 0 0 0 0 * * * 1 ; HALT
 0 0 0 0 1 0 rw> im------------> ; LI rw,(s)im
 0 0 0 1 0 0 b-> im------------> ; SM [(s)im]=rb
 0 0 1 0 0 0 rw> op----> a-> b-> ; CAL rw=ra,rb
@@ -62,7 +62,7 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 		// synopsys full_case parallel_case
 		16'b0000_0000_0000_xxx0: begin
 //F E D C B A 9 8 7 6 5 4 3 2 1 0
-//0 0 0 0 0 0 0 0 0 0 0 0 * * * 0 ; NOP DSTB
+//0 0 0 0 0 0 0 0 0 0 0 0 * * * 0 ; NOP
 `ifdef DEBUG
 	$display("NOP");
 `endif

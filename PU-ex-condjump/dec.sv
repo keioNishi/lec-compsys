@@ -20,12 +20,8 @@ module dec( // Decoder
 /*
 
 F E D C B A 9 8 7 6 5 4 3 2 1 0
-0 0 0 0 0 0 0 0 0 0 0 0 * * * 0 ; NOP (0) DSTB
+0 0 0 0 0 0 0 0 0 0 0 0 * * * 0 ; NOP (0)
 0 0 0 0 0 0 0 0 0 0 0 0 * * * 1 ; HALT (1)
-0 0 0 0 0 0 0 0 0 1 0 0 a-> b-> ; PUSH rb to ra (op = 100, SUB)
-0 0 0 0 0 0 0 0 0 1 0 1 a-> b-> ; POP rb from ra (op = 000, ADD)
-0 0 0 0 0 0 0 0 0 1 1 0 a-> b-> ; CALL PC to ra (op = 100, SUB)
-0 0 0 0 0 0 0 0 0 1 1 1 a-> b-> ; RET PC to ra (op = 000, ADD)
 0 0 0 0 0 0 0 1 op----> a-> b-> ; EVA CAL ra,rb/CMP ra,rb
 0 0 0 0 0 1 rw> im------------> ; LI rw,(s)im
 0 0 0 0 1 0 b-> im------------> ; SM [(s)im]=rb
@@ -113,7 +109,7 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 		// synopsys full_case parallel_case
 		16'b0000_0000_0000_xxx0: begin
 //F E D C B A 9 8 7 6 5 4 3 2 1 0
-//0 0 0 0 0 0 0 0 0 0 0 0 * * * 0 ; NOP DSTB
+//0 0 0 0 0 0 0 0 0 0 0 0 * * * 0 ; NOP
 `ifdef DEBUG
 	$display("NOP");
 `endif
@@ -366,7 +362,7 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 $display("----DEBUG----(%f)", $realtime);
 $display("PC[%h]we[%h]CODE:%h", test.pu.pc.pc, pcwe, o);
 $display("RA a[%h], b[%h], w[%h](%h)", ra, rb, wad, we);
-$display("ALU op[%h], dstb[%h], status Z[%h] C[%h] S[%h]", op, dstb, ze, ca, sg);
+$display("ALU op[%h], status Z[%h] C[%h] S[%h]", op, ze, ca, sg);
 $display("IMX[%h] IM[%h] PCS[%h]", liop, iv, pcs);
 $display("DMEM we[%h] sel[%h]", dmwe, dms);
 $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
