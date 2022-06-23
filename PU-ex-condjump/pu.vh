@@ -27,7 +27,7 @@
 `define THA 4'b1110
 `define THB 4'b1111
 
-`define PCS 5 // 5:0 program counter size
+`define PCS 7 // 7:0 program counter size
 `define PCPRFXS 1 // 1:0 1:0+5:0=7:0
 
 `define CMDS `WIDTH // see dec.v

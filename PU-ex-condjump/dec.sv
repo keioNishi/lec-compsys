@@ -33,7 +33,7 @@ F E D C B A 9 8 7 6 5 4 3 2 1 0
 0 1 0 1 rw> b-> im------------> ; LIH rw,rb,im
 0 1 1 0 rw> 0 0 0 0 0 0 0 S C Z ; LI rw,SR S:sign C:carry Z:zero
 0 1 1 0 0 0 1 * op----> a-> b-> ; SM [ra]=rb / SM [ra] = [ra op rb]
-1 0 0 0 rw> 0 0 im------------> ; LM rw=[im]
+1 0 0 0 0 0 rw> im------------> ; LM rw=[im]
 1 0 0 1 a-> b-> im------------> ; SM [ra + (s)im]=rb
 1 0 1 0 rw> * 0 op----> a-> b-> ; LM rw=[ra op rb]
 1 0 1 1 rw> a-> im------------> ; LM rw=[ra + (s)im]
@@ -41,16 +41,16 @@ F E D C B A 9 8 7 6 5 4 3 2 1 0
 1 1 1 a->(p f f)im------------> ; JP/BR pf [ra + (s)im]
 
 F E D C B A 9 8 7 6 5 4 3 2 1 0
-0 0 1 0 0 * rw> 1 1 1 1 0 0 b-> ; MV rw=rb
+0 0 1 0 0 F rw> 1 1 1 1 0 0 b-> ; MV rw=rb
 0 0 0 0 1 0 rw> 0 0 0 0 0 0 0 0 ; RESET rw (LI rw=0)
+0 0 0 0 0 0 1 0 0 0 0 1 a-> b-> ; CMP ra,rb (EVA SUB ra,rb)
 1 1 0 0 rw> rw> 0 0 0 0 0 0 0 1 ; INC rw
 1 1 0 1 rw> rw> 0 0 0 0 0 0 0 1 ; DEC rw
 1 1 0 0 rw> ra> 0 0 0 0 0 0 0 1 ; INC rw=ra (rw = ra+1)
 1 1 0 1 rw> ra> 0 0 0 0 0 0 0 1 ; DEC rw=ra (rw = ra-1)
-0 0 0 0 0 0 1 0 0 0 0 1 a-> b-> ; CMP ra,rb (EVA SUB ra,rb)
-1 0 0 0 rw> a-> 0 0 0 0 0 0 0 0 ; LM rw=[ra]
+0 1 1 0 0 0 1 F 1 1 1 1 a-> b-> ; SM [ra]=rb F
 1 0 0 1 a-> b-> 0 0 0 0 0 0 0 0 ; SM [ra]=rb
-0 1 1 0 0 0 1 * 1 1 1 1 a-> b-> ; SM [ra]=rb
+1 0 1 1 rw> a-> 0 0 0 0 0 0 0 0 ; LM rw=[ra]
 
 ADD 4'b0000 SUB 4'b0001 ASR 4'b0010 RSR 4'b0011
 RSL 4'b0100 BST 4'b0101 BRT 4'b0110 BTS 4'b0111
@@ -280,8 +280,8 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 		end
 		16'b1000_xxxx_xxxx_xxxx: begin
 //F E D C B A 9 8 7 6 5 4 3 2 1 0
-//1 0 0 0 rw> 0 0 im------------> ; LM rw=[im]
-			wad = o[11:10];
+//1 0 0 0 0 0 rw> im------------> ; LM rw=[im]
+			wad = o[9:8];
 			we = `ASSERT;
 			iv = o[`HALFWIDTH:0];
 			liop = `IMM;

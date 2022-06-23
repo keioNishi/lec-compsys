@@ -19,19 +19,19 @@ module dec( // Decoder
 /*
 
 F E D C B A 9 8 7 6 5 4 3 2 1 0
-0 0 0 0 0 0 0 0 0 0 0 0 * * * 0 ; NOP
-0 0 0 0 0 0 0 0 0 0 0 0 * * * 1 ; HALT
-0 0 0 0 1 0 rw> im------------> ; LI rw,(s)im
-0 0 0 1 0 0 b-> im------------> ; SM [(s)im]=rb
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ; NOP (0) DSTB
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 ; HALT (1)
+0 0 0 0 0 1 rw> im------------> ; LI rw,(s)im
+0 0 0 0 1 0 b-> im------------> ; SM [(s)im]=rb
 0 0 1 0 0 0 rw> op----> a-> b-> ; CAL rw=ra,rb
 0 1 0 0 rw> b-> im------------> ; LIL rw,rb,im
 0 1 0 1 rw> b-> im------------> ; LIH rw,rb,im
-1 0 0 0 0 0 0 0 op----> a-> b-> ; SM [ra]=rb / SM [ra] = [ra op rb]
+0 1 1 0 0 0 1 0 op----> a-> b-> ; SM [ra]=rb / SM [ra] = [ra op rb]
+1 0 0 0 0 0 rw> im------------> ; LM rw=[im]
 1 0 0 1 a-> b-> im------------> ; SM [ra + (s)im]=rb
-1 1 0 0 rw> 0 0 im------------> ; LM rw=[im]
-1 1 0 1 rw> F 0 op----> a-> b-> ; LM rw=[ra op rb]
-1 1 1 0 rw> a-> im------------> ; LM rw=[ra + (s)im]
-1 1 1 # rw> a-> im------------> ; CAL rw=ra,im (#=0:ADD/1:SUB only)
+1 0 1 0 rw> F 0 op----> a-> b-> ; LM rw=[ra op rb]
+1 0 1 1 rw> a-> im------------> ; LM rw=[ra + (s)im]
+1 1 0 # rw> a-> im------------> ; CAL rw=ra,im (#=0:ADD/1:SUB only)
 
 ADD 4'b0000 SUB 4'b0001 ASR 4'b0010 RSR 4'b0011
 RSL 4'b0100 BST 4'b0101 BRT 4'b0110 BTS 4'b0111
@@ -75,9 +75,9 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 	$display("HALT");
 `endif
 		end
-		16'b0000_10xx_xxxx_xxxx: begin
+		16'b0000_01xx_xxxx_xxxx: begin
 //F E D C B A 9 8 7 6 5 4 3 2 1 0
-//0 0 0 0 1 0 rw> im------------> ; LI rw,(s)im
+//0 0 0 0 0 1 rw> im------------> ; LI rw,(s)im
 			wad = o[9:8];
 			we = `ASSERT;
 			iv = o[`HALFWIDTH:0];
@@ -86,9 +86,9 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 	$display("LI wr:%h (s)im:%h // liop:%h", wad, iv, liop);
 `endif
 		end
-		16'b0001_00xx_xxxx_xxxx: begin
+		16'b0000_10xx_xxxx_xxxx: begin
 //F E D C B A 9 8 7 6 5 4 3 2 1 0
-//0 0 0 1 0 0 b-> im------------> ; SM [(s)im]=rb
+//0 0 0 0 1 0 b-> im------------> ; SM [(s)im]=rb
 			rb = o[9:8];
 			dmwe = `ASSERT;
 			iv = o[`HALFWIDTH:0];
@@ -136,9 +136,9 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 	$display("LIH wr:%h liop:%h, IM:%h (rb:%h)", wad, liop, iv, rb);
 `endif
 		end
-		16'b1000_0000_xxxx_xxxx: begin
+		16'b0110_0010_xxxx_xxxx: begin
 //F E D C B A 9 8 7 6 5 4 3 2 1 0
-//1 0 0 0 0 0 0 0 op----> a-> b-> ; SM [ra]=rb / SM [ra] = [ra op rb]
+//0 1 1 0 0 0 1 0 op----> a-> b-> ; SM [ra]=rb / SM [ra] = [ra op rb]
 //
 //
 //
@@ -147,6 +147,18 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 //
 `ifdef DEBUG
 	$display("SM [ra:%h]= ra:%h op rb:%h F:%h", ra, ra, op, rb);
+`endif
+		end
+		16'b1100_xxxx_xxxx_xxxx: begin
+//F E D C B A 9 8 7 6 5 4 3 2 1 0
+//1 0 0 0 0 0 rw> im------------> ; LM rw=[im]
+			wad = o[9:8];
+			we = `ASSERT;
+			iv = o[`HALFWIDTH:0];
+			liop = `IMM;
+			dms = `ASSERT;
+`ifdef DEBUG
+	$display("LM rw:%h = [liop:%h IM:%h]", wad, liop, iv);
 `endif
 		end
 		16'b1001_xxxx_xxxx_xxxx: begin
@@ -162,21 +174,9 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 	$display("SM [ra:%h + liop:%h (s)IM:%h] = rb:%h", ra, liop, iv, rb);
 `endif
 		end
-		16'b1100_xxxx_xxxx_xxxx: begin
+		16'b1010_xxxx_xxxx_xxxx: begin
 //F E D C B A 9 8 7 6 5 4 3 2 1 0
-//1 1 0 0 rw> 0 0 im------------> ; LM rw=[im]
-			wad = o[11:10];
-			we = `ASSERT;
-			iv = o[`HALFWIDTH:0];
-			liop = `IMM;
-			dms = `ASSERT;
-`ifdef DEBUG
-	$display("LM rw:%h = [liop:%h IM:%h]", wad, liop, iv);
-`endif
-		end
-		16'b1101_xxxx_xxxx_xxxx: begin
-//F E D C B A 9 8 7 6 5 4 3 2 1 0
-//1 1 0 1 rw> F 0 op----> a-> b-> ; LM rw=[ra op rb]
+//1 0 1 0 rw> F 0 op----> a-> b-> ; LM rw=[ra op rb]
 //
 //
 //
@@ -200,9 +200,9 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 	$display("LM rw:%h = [ra:%h + liop:%h IM:%h]", wad, ra, liop, iv);
 `endif
 		end
-		16'b111x_xxxx_xxxx_xxxx: begin
+		16'b110x_xxxx_xxxx_xxxx: begin
 //F E D C B A 9 8 7 6 5 4 3 2 1 0
-//1 1 1 # rw> a-> im------------> ; CAL rw=ra,im (#=0:ADD/1:SUB only)
+//1 1 0 # rw> a-> im------------> ; CAL rw=ra,im (#=0:ADD/1:SUB only)
 			wad = o[11:10];
 			we = `ASSERT;
 			ra = o[9:8];
