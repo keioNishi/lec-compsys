@@ -1,0 +1,108 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Thu Jun 23 17:05:56 2022
+[*]
+[dumpfile] "C:\Users\west\lec-compsys\PU\PU-FIN\pu.vcd"
+[dumpfile_mtime] "Thu Jun 23 17:02:32 2022"
+[dumpfile_size] 31338
+[savefile] "C:\Users\west\lec-compsys\PU\PU-FIN\pu.gtkw"
+[timestart] 229700
+[size] 1611 1332
+[pos] -1 -1
+*-15.000000 349700 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test.
+[treeopen] test.pu.
+[sst_width] 197
+[signals_width] 211
+[sst_expanded] 1
+[sst_vpaned_height] 410
+@28
+test.pu.clk
+test.pu.rst
+@22
+test.pu.a2sel[15:0]
+test.pu.b2imx[15:0]
+test.pu.a2alu[15:0]
+test.pu.b2alu[15:0]
+@28
+test.pu.ads
+test.pu.ats
+@22
+test.pu.dmad[15:0]
+test.pu.dmdt[15:0]
+test.pu.dmrd[15:0]
+@28
+test.pu.dms
+test.pu.dmwe
+test.pu.dstb
+test.pu.h
+@22
+test.pu.iv[7:0]
+@28
+test.pu.liop[1:0]
+@22
+test.pu.loop[15:0]
+test.pu.rwd[15:0]
+@28
+test.pu.swe
+test.pu.wad[1:0]
+test.pu.we
+@200
+-imem
+@22
+test.pu.o[15:0]
+@200
+-pc
+@22
+test.pu.pca[7:0]
+@28
+test.pu.pcwe
+@200
+-ra
+@28
+test.pu.ra.arad[1:0]
+@22
+test.pu.ra.a[15:0]
+@28
+test.pu.ra.brad[1:0]
+@22
+test.pu.ra.b[15:0]
+@28
+test.pu.ra.we
+test.pu.ra.wad[1:0]
+@22
+test.pu.ra.wd[15:0]
+@200
+-dmem
+@22
+test.pu.dmem.ad[7:0]
+test.pu.dmem.rd[15:0]
+test.pu.dmem.wd[15:0]
+@28
+test.pu.dmem.we
+@200
+-alu
+@22
+test.pu.alu.a[15:0]
+test.pu.alu.b[15:0]
+test.pu.alu.op[3:0]
+test.pu.alu.r[15:0]
+@28
+test.pu.alu.dstb
+test.pu.alu.swe
+test.pu.alu.ica
+test.pu.alu.ca
+test.pu.alu.isg
+test.pu.alu.sg
+test.pu.alu.ize
+test.pu.alu.ze
+@200
+-sp
+@22
+test.pu.sp.regsp[15:0]
+test.pu.sp.spi[15:0]
+test.pu.sp.spo[15:0]
+@28
+test.pu.sp.we
+[pattern_trace] 1
+[pattern_trace] 0
