@@ -8,7 +8,7 @@ module top(output we, output logic [15:0] wd, input clk, rst);
 	alu alu(a, b, op, wd);
 	pc pc(halt, pca, clk, rst);
 	imem imem(pca, o);
-	dec dec(o, arad, brad, op, wad,we, halt);
+	dec dec(o, arad, brad, op, wad, we, halt);
 endmodule
 
 
