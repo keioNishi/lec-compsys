@@ -16,10 +16,10 @@ typsim:		gate.v a.out
 		iverilog -gspecify -T typ test.v gate.v ../osu018_stdcells.v
 		vvp a.out
 minsim:		gate.v a.out
-		iverilog -gspecify -T typ test.v gate.v ../osu018_stdcells.v
+		iverilog -gspecify -T min test.v gate.v ../osu018_stdcells.v
 		vvp a.out
 maxsim:		gate.v a.out
-		iverilog -gspecify -T typ test.v gate.v ../osu018_stdcells.v
+		iverilog -gspecify -T max test.v gate.v ../osu018_stdcells.v
 		vvp a.out
 top:
 		iverilog -g2012 top.v alu.v pc.v imem.v rega.v dec.v
