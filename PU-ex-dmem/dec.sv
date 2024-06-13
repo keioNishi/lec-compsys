@@ -149,7 +149,7 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 	$display("SM [ra:%h]= ra:%h op rb:%h F:%h", ra, ra, op, rb);
 `endif
 		end
-		16'b1100_xxxx_xxxx_xxxx: begin
+		16'b1000_xxxx_xxxx_xxxx: begin
 //F E D C B A 9 8 7 6 5 4 3 2 1 0
 //1 0 0 0 0 0 rw> im------------> ; LM rw=[im]
 			wad = o[9:8];
@@ -187,9 +187,9 @@ $display("r0[%h]1[%h]2[%h]3[%h]", test.pu.ra.rega[0], test.pu.ra.rega[1],
 	$display("LM rw:%d = [ra:%h op:%h rb:%h]", wad, ra, op, rb);
 `endif
 		end
-		16'b1110_xxxx_xxxx_xxxx: begin
+		16'b1011_xxxx_xxxx_xxxx: begin
 //F E D C B A 9 8 7 6 5 4 3 2 1 0
-//1 1 1 0 rw> a-> im------------> ; LM rw=[ra + (s)im]
+//1 0 1 1 rw> a-> im------------> ; LM rw=[ra + (s)im]
 //
 //
 //
