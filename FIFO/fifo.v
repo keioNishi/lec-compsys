@@ -26,7 +26,7 @@ module fifo(in, we, full, out, re, empty, clk, rst);
 		full = 1'b0;
 		headi = head + 1;
 		if(head == tail) empty = 1'b1;
-		if(head == headi) full = 1'b1;
+		if(headi == tail) full = 1'b1;
 	end
 endmodule
 
