@@ -3,7 +3,7 @@
 [![yosysバッジ](https://img.shields.io/badge/yosys->v0.12--1-84e7f7.svg?style=flat)](https://github.com/YosysHQ/yosys#readme)
 
 # 「計算機システム設計論」レクチャーノート
-## lec-dataai / Lecture Notes for "Multimedia Design"
+## lec-compsys / Lecture Notes for "Computer System Design"
 - 全体の閲覧とダウンロード
   - こちらのページ、もしくはgit cloneによりダウンロードを行って利用してください
 - 個別ダウンロードは下記にリンクがあります
